@@ -11,10 +11,10 @@ TOOL_LIBS += -lpthread
 
 pincxxgendepend = $(CXX) $(CXXFLAGS) $(TOOL_INCLUDES) $(TOOL_CXXFLAGS) $(INCS) -MM -MT $@ -MF $(builddir)$*.d $<
 
-all: ConDebug.so
+all: LaySD.so
 	$(LINKER) $(TOOL_LDFLAGS) $(LINK_DEBUG) ${LINK_EXE}$@ $^ ${TOOL_LPATHS} $(TOOL_LIBS) $(DBG)
 
-ConDebug.so : main.o monitor_shared_memory.o Detector.o VectorClocks.o Init_Close.o monitor_function.o
+LaySD.so : main.o monitor_shared_memory.o Detector.o VectorClocks.o Init_Close.o monitor_function.o
 	$(LINKER) $(TOOL_LDFLAGS) $(LINK_DEBUG) ${LINK_EXE}$@ $^ ${TOOL_LPATHS} $(TOOL_LIBS) $(DBG)
 
 main.o : main.cpp main_basictype.h
